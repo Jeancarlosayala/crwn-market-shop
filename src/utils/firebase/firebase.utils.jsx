@@ -1,5 +1,11 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth'
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from 'firebase/auth'
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -11,7 +17,7 @@ const firebaseConfig = {
   appId: "1:570276939842:web:ccbef29f4f04244c69c5db"
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({
@@ -20,6 +26,7 @@ googleProvider.setCustomParameters({
 
 export const auth = getAuth()
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
+
 
 export const db = getFirestore()
 
@@ -52,8 +59,14 @@ export const createUserAuth = async (userAuth, additionalInformation = {}) => {
 
 
 export const createUserEmail = async (email, password) => {
-  
+
   if (!email || !password) return;
-  
+
   return await createUserWithEmailAndPassword(auth, email, password)
+}
+
+export const signInWithEmail = async (email, password) => {
+  if(!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth, email, password)
 }
