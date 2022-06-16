@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../components/buttons.components";
+import Button from "../components/buttons.component";
 import FormInput from "../components/form-input.component";
 import '../styles/sign-up.styles.scss'
 
@@ -14,8 +14,10 @@ const defaultFormFields = {
 
 const SignUpForm = () => {
 
-  const [formField, setFormField] = useState(defaultFormFields)
-  const { displayName, email, password, confirmPassword } = formField
+  const [formField, setFormField] = useState(defaultFormFields);
+  const { displayName, email, password, confirmPassword } = formField;
+
+
 
   const resetFormField = () => {
     setFormField(defaultFormFields);
@@ -25,19 +27,20 @@ const SignUpForm = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      alert('The password is not match')
+      alert('The password is not match');
       return;
     }
 
     try {
-      const { user } = await createUserEmail(email, password)
+      const { user } = await createUserEmail(email, password);
       await createUserAuth(user, { displayName });
 
-      resetFormField()
+
+      resetFormField();
 
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
-        alert('This user is already exist, please use other user')
+        alert('This user is already exist, please use other user');
       } else {
         console.log('user creation encountered an error', error);
       }

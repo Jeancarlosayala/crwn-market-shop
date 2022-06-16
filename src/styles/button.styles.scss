@@ -41,14 +41,14 @@
 
   &.neumorphism {
     border-radius: 50px;
-    background: #d4d4d4;
-    box-shadow: 15px 15px 60px #b4b4b4,
-      -15px -15px 60px #f4f4f4;
+    background: #ffffff;
+    box-shadow: 20px 20px 60px #e1e1e1,
+      -20px -20px 60px #ffffff;
 
     &:hover {
-      background: linear-gradient(145deg, #bfbfbf, #e3e3e3);
-      box-shadow: 15px 15px 60px #b4b4b4,
-        -15px -15px 60px #f4f4f4;
+      background: linear-gradient(145deg, #e6e6e6, #ffffff);
+      box-shadow: 15px 15px 60px #f0f0f0,
+        -15px -15px 60px #e1e1e1;
     }
   }
 }
