@@ -1,8 +1,8 @@
 import { useState} from "react"
 import { signInWithEmail, signInWithGooglePopup } from "../utils/firebase/firebase.utils"
-import Button from "../components/buttons.component"
+import Button, {BUTTON_TYPE_CLASSES} from "../components/buttons.component"
 import FormInput from "../components/form-input.component"
-import '../styles/sign-in.styles.scss'
+import {ButtonsContainer, SignInContainer} from '../styles/sign-in.styles'
 
 const signInForm = {
   email: '',
@@ -51,7 +51,7 @@ const SingIn = () => {
   }
 
   return (
-    <div className="sign-in-container">
+    <SignInContainer>
       <h2>Already have an account?</h2>
       <span>Sign up with your email and password</span>
 
@@ -73,12 +73,12 @@ const SingIn = () => {
           onChange={handleChange}
         />
 
-        <div className="buttons-container">
-          <Button type="submit" buttonType="neumorphism" >Sing In</Button>
-          <Button type='button' buttonType='google' onClick={logGoogleUser}>Google Sign In</Button>
-        </div>
+        <ButtonsContainer>
+          <Button type="submit" buttonType={BUTTON_TYPE_CLASSES.neumorphism} >Sing In</Button>
+          <Button type='button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={logGoogleUser}>Google Sign In</Button>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   )
 }
 

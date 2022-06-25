@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Button from "../components/buttons.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../components/buttons.component";
 import FormInput from "../components/form-input.component";
-import '../styles/sign-up.styles.scss'
+import { SignUpContainer } from '../styles/sign-up.styles'
 
 import { createUserEmail, createUserAuth } from "../utils/firebase/firebase.utils";
 
@@ -54,7 +54,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className="sign-up-container">
+    <SignUpContainer>
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and password</span>
 
@@ -91,9 +91,9 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword} />
 
-        <Button type="submit" buttonType='neumorphism' >Sign Up</Button>
+        <Button type="submit" buttonType={BUTTON_TYPE_CLASSES.neumorphism} >Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   )
 }
 
